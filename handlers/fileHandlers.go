@@ -9,3 +9,21 @@ func FileList(c *fiber.Ctx) error {
 		"success": true,
 	})
 }
+
+func FileCreate(c *fiber.Ctx) error {
+	return c.JSON(fiber.Map{
+		"success": true,
+	})
+}
+
+func FileGet(c *fiber.Ctx) error {
+	return c.JSON(fiber.Map{
+		"success": true,
+	})
+}
+
+func FileDelete(c *fiber.Ctx) error {
+	return c.JSON(fiber.Map{
+		"success": true,
+	})
+}

@@ -9,3 +9,21 @@ func BucketList(c *fiber.Ctx) error {
 		"success": true,
 	})
 }
+
+func BucketCreate(c *fiber.Ctx) error {
+	return c.JSON(fiber.Map{
+		"success": true,
+	})
+}
+
+func BucketGet(c *fiber.Ctx) error {
+	return c.JSON(fiber.Map{
+		"success": true,
+	})
+}
+
+func BucketDelete(c *fiber.Ctx) error {
+	return c.JSON(fiber.Map{
+		"success": true,
+	})
+}

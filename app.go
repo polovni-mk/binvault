@@ -29,6 +29,14 @@ func main() {
 	v1 := app.Group("/api/v1")
 
 	v1.Get("/buckets", handlers.BucketList)
+	v1.Post("/buckets", handlers.BucketCreate)
+	v1.Get("/buckets/:id", handlers.BucketGet)
+	v1.Delete("/buckets/:id", handlers.BucketDelete)
+
+	v1.Get("/buckets/:bucketId/files", handlers.FileList)
+	v1.Post("/buckets/:bucketId/files", handlers.FileCreate)
+	v1.Get("/buckets/:bucketId/files/:id", handlers.FileGet)
+	v1.Delete("/buckets/:bucketId/files/:id", handlers.FileDelete)
 
 	log.Fatal(app.Listen(*port))
 }
