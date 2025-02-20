@@ -30,6 +30,5 @@ func main() {
 
 	v1.Get("/buckets", handlers.BucketList)
 
-	// Listen on port 3000
 	log.Fatal(app.Listen(*port))
 }

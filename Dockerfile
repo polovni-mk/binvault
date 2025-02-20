@@ -5,8 +5,6 @@ RUN go mod download
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o app .
 FROM alpine:latest as release
 WORKDIR /app
-RUN mkdir ./static
-COPY ./static ./static
 COPY --from=build /go/src/binvault/app .
 RUN apk -U upgrade \
     && apk add --no-cache dumb-init ca-certificates \
