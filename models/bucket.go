@@ -1,7 +1,8 @@
 package models
 
 type Bucket struct {
-	Id     string `json:"id"`
-	Name   string `json:"name"`
-	Public bool   `json:"public"`
+	Id          string `json:"id"`
+	CreatedBy   string `json:"createdBy"`
+	CreatedAt   string `json:"createdAt"`
+	AccessLevel string `json:"accessLevel"`
 }

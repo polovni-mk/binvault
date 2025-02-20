@@ -1,5 +1,10 @@
 package models
 
 type File struct {
-	Name string `json:"name"`
+	Id        string `json:"name"`
+	BucketId  string `json:"bucketId"`
+	Size      int64  `json:"size"`
+	Extension string `json:"extension"`
+	Type      string `json:"type"` // image, text, video, audio, application
+	CreatedAt string `json:"createdAt"`
 }
