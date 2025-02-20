@@ -4,6 +4,7 @@ import (
 	"binvault/models"
 	"binvault/utils"
 	"encoding/json"
+	"fmt"
 	"log"
 	"os"
 	"path/filepath"
@@ -23,6 +24,35 @@ func GetBuckets() []*models.Bucket {
 func GetBucket(name string) *models.Bucket {
 	bucket := createBucketModel(name)
 	return bucket
+}
+
+func GetBucketFile(bucketId string, fileId string) *models.File {
+	path := utils.GetEnv("FILE_SYS_PATH")
+	filePath := filepath.Join(path, bucketId, fileId)
+	file, err := os.Open(filePath)
+	if err != nil {
+		log.Println("Error opening file:", err)
+		return &models.File{}
+	}
+	defer file.Close()
+
+	fileInfo, err := file.Stat()
+	if err != nil {
+		fmt.Println("Error getting file info:", err)
+		return &models.File{}
+	}
+
+	fileName := fileInfo.Name()
+	fileSize := fileInfo.Size()
+	fileExt := filepath.Ext(fileName)
+
+	var fileModel *models.File = &models.File{
+		Id:        fileId,
+		Size:      fileSize,
+		Extension: fileExt,
+	}
+
+	return fileModel
 }
 
 func readDirectories(path string) []string {
