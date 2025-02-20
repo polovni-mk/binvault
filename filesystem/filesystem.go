@@ -1,4 +1,4 @@
-package database
+package filesystem
 
 import (
 	"binvault/models"
