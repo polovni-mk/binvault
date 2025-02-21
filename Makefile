@@ -5,7 +5,7 @@ help:
 	@grep -F -h "##" $(MAKEFILE_LIST) | grep -F -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
 run-local:
-	go run app.go
+	go run main.go
 
 requirements:
 	go mod tidy
