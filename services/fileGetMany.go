@@ -14,11 +14,12 @@ func FileGetMany(bucketName string, limit int, offset int) []models.File {
 	var files []models.File
 	for _, entry := range entries {
 		files = append(files, models.File{
-			Bucket:    bucket.Name,
-			Name:      entry.Name,
-			Size:      entry.Size,
-			Extension: entry.Extension,
-			Type:      entry.Type,
+			Bucket:     bucket.Name,
+			Name:       entry.Name,
+			Size:       entry.Size,
+			Extension:  entry.Extension,
+			Type:       entry.Type,
+			Visibility: bucket.Visibility,
 		})
 	}
 	return files

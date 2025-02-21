@@ -12,10 +12,11 @@ func FileGetOne(bucketName string, fileName string) models.File {
 	var entry database.File
 	db.First(&entry, "name = ? bucketID = ?", fileName, bucket.ID)
 	return models.File{
-		Bucket:    bucket.Name,
-		Name:      entry.Name,
-		Size:      entry.Size,
-		Extension: entry.Extension,
-		Type:      entry.Type,
+		Bucket:     bucket.Name,
+		Name:       entry.Name,
+		Size:       entry.Size,
+		Extension:  entry.Extension,
+		Type:       entry.Type,
+		Visibility: bucket.Visibility,
 	}
 }

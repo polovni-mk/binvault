@@ -21,6 +21,11 @@ func FileGetOne(w http.ResponseWriter, r *http.Request, params httprouter.Params
 
 }
 
+// GET /bucket/:bucketName/files/:fileId/content
+func FileGetContent(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
+
+}
+
 // DELETE /bucket/:bucketName/files/:fileId
 func FileDelete(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
 
