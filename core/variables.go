@@ -2,6 +2,8 @@ package core
 
 import (
 	"os"
+	"path/filepath"
+	"reflect"
 	"sync"
 )
 
@@ -15,6 +17,7 @@ type Variables struct {
 	SERVER_HOST    string
 	PUBLIC_PATH    string
 	PRIVATE_PATH   string
+	TEMP_PATH      string
 	DB_PATH        string
 	PUBLIC_SSSHKEY string
 }
@@ -26,11 +29,28 @@ func GetVars() *Variables {
 			SERVER_HOST:    readEnv("SERVER_HOST", "localhost"),
 			PUBLIC_PATH:    readEnv("PUBLIC_PATH", "./data/public"),
 			PRIVATE_PATH:   readEnv("PRIVATE_PATH", "./data/private"),
+			TEMP_PATH:      readEnv("TEMP_PATH", "./data/temp"),
 			DB_PATH:        readEnv("DB_PATH", "./data/_database"),
 			PUBLIC_SSSHKEY: readEnv("PUBLIC_SSSHKEY", ""),
 		}
 	})
 	return variables
+}
+
+func GetVar(key string) string {
+	vars := GetVars()
+	v := reflect.ValueOf(vars)
+	field := v.Elem().FieldByName(key)
+	return field.String()
+}
+
+func GetPath(key string) string {
+	path := GetVar(key)
+	abs, err := filepath.Abs(path)
+	if err != nil {
+		return path
+	}
+	return abs
 }
 
 func readEnv(key string, fallback string) string {

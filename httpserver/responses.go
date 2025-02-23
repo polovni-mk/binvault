@@ -26,10 +26,10 @@ func JSONResponse(w http.ResponseWriter, statusCode int, data any) {
 
 func ErrorResponse(w http.ResponseWriter, statusCode int, message string) {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(statusCode)
 	var result = JSONResult{
 		Data:  nil,
 		Error: ResponseError{Message: message},
 	}
+	w.WriteHeader(statusCode)
 	json.NewEncoder(w).Encode(result)
 }
