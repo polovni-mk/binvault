@@ -1,7 +1,7 @@
 package database
 
 import (
-	"binvault/models"
+	"binvault/pkg/models"
 
 	"gorm.io/gorm"
 )

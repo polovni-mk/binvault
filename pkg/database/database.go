@@ -1,7 +1,7 @@
 package database
 
 import (
-	"binvault/core"
+	"binvault/pkg/cfg"
 	"log"
 
 	"github.com/glebarez/sqlite"
@@ -18,7 +18,7 @@ func Init() {
 
 func OpenConnection() *gorm.DB {
 	log.Default().Println("Opening connection to database")
-	var sqlite = sqlite.Open(core.GetVars().DB_PATH)
+	var sqlite = sqlite.Open(cfg.GetVars().DB_PATH)
 	db, err := gorm.Open(sqlite)
 	if err != nil {
 		panic("failed to connect database")

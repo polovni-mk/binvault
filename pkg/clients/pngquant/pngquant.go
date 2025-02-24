@@ -1,13 +1,13 @@
-package compression
+package pngquant
 
 import (
-	"binvault/models"
+	"binvault/pkg/models"
 	"fmt"
 	"os"
 	"os/exec"
 )
 
-func compress(file *models.File) {
+func Compress(file *models.File) {
 	// no return needed
 }
 

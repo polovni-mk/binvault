@@ -1,4 +1,4 @@
-package httpserver
+package helpers
 
 import (
 	"net/http"
@@ -6,8 +6,8 @@ import (
 )
 
 type RequestPagination struct {
-	limit  int
-	offset int
+	Limit  int
+	Offset int
 }
 
 func GetRequestPagination(r *http.Request) *RequestPagination {

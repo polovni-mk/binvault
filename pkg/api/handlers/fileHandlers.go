@@ -1,7 +1,8 @@
-package httpserver
+package handlers
 
 import (
-	"binvault/services"
+	"binvault/pkg/api/helpers"
+	"binvault/pkg/services"
 	"net/http"
 
 	"github.com/julienschmidt/httprouter"
@@ -9,10 +10,10 @@ import (
 
 // GET /bucket/:bucketName/files
 func FileGetMany(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
-	pagination := GetRequestPagination(r)
+	pagination := helpers.GetRequestPagination(r)
 	bucketName := params.ByName("bucketName")
-	files := services.FileGetMany(bucketName, pagination.limit, pagination.offset)
-	JSONResponse(w, http.StatusOK, files)
+	files := services.FileGetMany(bucketName, pagination.Limit, pagination.Offset)
+	helpers.JSONResponse(w, http.StatusOK, files)
 }
 
 // POST /bucket/:bucketName/files
@@ -25,7 +26,7 @@ func FileGetOne(w http.ResponseWriter, r *http.Request, params httprouter.Params
 	bucketName := params.ByName("bucketName")
 	fileId := params.ByName("fileId")
 	file := services.FileGetOne(bucketName, fileId)
-	JSONResponse(w, http.StatusOK, file)
+	helpers.JSONResponse(w, http.StatusOK, file)
 }
 
 // GET /bucket/:bucketName/files/:fileId/content

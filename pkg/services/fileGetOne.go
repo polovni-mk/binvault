@@ -1,8 +1,8 @@
 package services
 
 import (
-	"binvault/database"
-	"binvault/models"
+	"binvault/pkg/database"
+	"binvault/pkg/models"
 )
 
 func FileGetOne(bucketName string, fileName string) models.File {

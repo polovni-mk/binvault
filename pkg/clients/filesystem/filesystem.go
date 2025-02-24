@@ -9,8 +9,14 @@ import (
 
 var FileQueue = make(chan string, 10)
 
+func initQueue() {
+	// TODO: read existing files and schedule them for processing
+}
+
 func WatchFolder(folderPath string) {
 	watcher, err := fsnotify.NewWatcher()
+
+	initQueue()
 
 	if err != nil {
 		fmt.Println("error creating folder watcher", err)
@@ -29,7 +35,7 @@ func WatchFolder(folderPath string) {
 			if event.Op&fsnotify.Create == fsnotify.Create {
 				filePath := event.Name
 				fmt.Println("New file detected:", filePath)
-				FileQueue <- filePath // Send to compression queue
+				FileQueue <- filePath
 			}
 		case err, ok := <-watcher.Errors:
 			if !ok {

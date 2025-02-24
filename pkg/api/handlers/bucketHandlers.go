@@ -1,7 +1,8 @@
-package httpserver
+package handlers
 
 import (
-	"binvault/services"
+	"binvault/pkg/api/helpers"
+	"binvault/pkg/services"
 	"log"
 	"net/http"
 
@@ -10,10 +11,10 @@ import (
 
 // GET /buckets
 func BucketGetMany(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
-	pagination := GetRequestPagination(r)
-	buckets := services.BucketGetMany(pagination.limit, pagination.offset)
+	pagination := helpers.GetRequestPagination(r)
+	buckets := services.BucketGetMany(pagination.Limit, pagination.Offset)
 	log.Println(buckets)
-	JSONResponse(w, http.StatusOK, buckets)
+	helpers.JSONResponse(w, http.StatusOK, buckets)
 }
 
 // POST /buckets

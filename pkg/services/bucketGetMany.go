@@ -1,8 +1,8 @@
 package services
 
 import (
-	"binvault/database"
-	"binvault/models"
+	"binvault/pkg/database"
+	"binvault/pkg/models"
 )
 
 func BucketGetMany(limit int, offset int) []models.Bucket {
