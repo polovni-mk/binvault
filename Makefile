@@ -4,8 +4,8 @@ image_name = gofiber:latest
 help:
 	@grep -F -h "##" $(MAKEFILE_LIST) | grep -F -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
 
-run-local:
-	go run main.go
+run:
+	go run pkg/runnable.go
 
 requirements:
 	go mod tidy

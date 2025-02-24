@@ -3,28 +3,43 @@ package filesystem
 import (
 	"fmt"
 	"log"
+	"os"
+	"path/filepath"
 
 	"github.com/fsnotify/fsnotify"
 )
 
 var FileQueue = make(chan string, 10)
 
-func initQueue() {
-	// TODO: read existing files and schedule them for processing
+func initQueue(dirPath string) {
+	files, err := os.ReadDir(dirPath)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for _, file := range files {
+		if !file.IsDir() {
+			absPath, err := filepath.Abs(file.Name())
+			if err != nil {
+				log.Println("error getting absolute path:", err)
+				continue
+			}
+			FileQueue <- absPath
+		}
+	}
 }
 
-func WatchFolder(folderPath string) {
+func WatchFolder(dirPath string) {
+	initQueue(dirPath)
 	watcher, err := fsnotify.NewWatcher()
-
-	initQueue()
 
 	if err != nil {
 		fmt.Println("error creating folder watcher", err)
 	}
 
 	defer watcher.Close()
-	log.Default().Println("Watching folder:", folderPath)
-	watcher.Add(folderPath)
+	log.Default().Println("Watching folder:", dirPath)
+	watcher.Add(dirPath)
 
 	for {
 		select {

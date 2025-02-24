@@ -9,15 +9,15 @@ import (
 func initRouter() *httprouter.Router {
 	router := httprouter.New()
 
-	router.GET("/buckets", handlers.BucketGetMany)
-	router.POST("/buckets", handlers.BucketCreate)
-	router.GET("/buckets/:bucketId", handlers.BucketGetOne)
-	router.DELETE("/buckets/:bucketId", handlers.BucketDelete)
+	router.GET("/api/buckets", handlers.BucketGetMany)
+	router.POST("/api/buckets", handlers.BucketCreate)
+	router.GET("/api/buckets/:bucketName", handlers.BucketGetOne)
+	router.DELETE("/api/buckets/:bucketName", handlers.BucketDelete)
 
-	router.GET("/bucket/:bucketId/files", handlers.FileGetMany)
-	router.POST("/bucket/:bucketId/files", handlers.FileCreate)
-	router.GET("/bucket/:bucketId/files/:fileId", handlers.FileGetOne)
-	router.DELETE("/bucket/:bucketId/files/:fileId", handlers.FileDelete)
+	router.GET("/api/bucket/:bucketName/files", handlers.FileGetMany)
+	router.POST("/api/bucket/:bucketName/files", handlers.FileCreate)
+	router.GET("/api/bucket/:bucketName/files/:fileId", handlers.FileGetOne)
+	router.DELETE("/api/bucket/:bucketName/files/:fileId", handlers.FileDelete)
 
 	return router
 }
