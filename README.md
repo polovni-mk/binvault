@@ -66,6 +66,14 @@ curl http://localhost:8080/api/files/image_compressed.png
 curl http://localhost:8080/api/bucket/default
 ```
 
+| HTTP Method | Endpoint         | Description                      | Request Body | Response Body |
+|-------------|------------------|----------------------------------|--------------|---------------|
+| GET         | /api/resource    | Retrieves a list of resources    | None         | JSON array of resources |
+| GET         | /api/resource/:id| Retrieves a specific resource    | None         | JSON object of the resource |
+| POST        | /api/resource    | Creates a new resource           | JSON object  | JSON object of the created resource |
+| PUT         | /api/resource/:id| Updates an existing resource     | JSON object  | JSON object of the updated resource |
+| DELETE      | /api/resource/:id| Deletes a specific resource      | None         | JSON object with deletion status |
+
 ---
 
 ## 🔒 Authentication & Security
