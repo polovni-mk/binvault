@@ -2,6 +2,8 @@
 
 **BinVault** is an open-source file storage and compression service designed for cloud-native environments. It efficiently compresses, stores, and serves images and other files, making it ideal for developers, hosting providers, and edge computing platforms.
 
+[![forthebadge](https://forthebadge.com/images/featured/featured-gluten-free.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/featured/featured-built-with-love.svg)](https://forthebadge.com)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/kalevski/binvault?style=for-the-badge)
 ![Docker Pulls](https://img.shields.io/docker/pulls/kalevski/binvault?style=for-the-badge)
 ![GitHub issues](https://img.shields.io/github/issues/kalevski/binvault?style=for-the-badge)
